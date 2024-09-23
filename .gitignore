@@ -130,6 +130,8 @@ ENV/
 env.bak/
 venv.bak/
 .idea
+logs/*
+test_results/*
 
 # Spyder project settings
 .spyderproject
