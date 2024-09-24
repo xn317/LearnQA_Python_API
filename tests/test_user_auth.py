@@ -24,6 +24,7 @@ class TestUserAuth(BaseCase):
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.title("Test auth user")
     @allure.description("This test successfully authorize user by email and password")
+    @allure.label("owner", "Dmitry Dubrovin")
     def test_auth_user(self):
         response2 = MyRequests.get("/user/auth",
                                    headers={"x-csrf-token": self.token},
@@ -39,6 +40,7 @@ class TestUserAuth(BaseCase):
     @allure.severity(allure.severity_level.NORMAL)
     @allure.title("Test auth user without cookie or token")
     @allure.description("This test check authorization status w/o sending auth cookies or token")
+    @allure.label("owner", "Dmitry Dubrovin")
     @pytest.mark.parametrize('condition', exclude_params)
     def test_negative_auth_check(self, condition):
         if condition == "no_cookie":

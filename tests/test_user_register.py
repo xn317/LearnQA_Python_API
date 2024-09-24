@@ -14,6 +14,7 @@ class TestUserRegister(BaseCase):
     @allure.severity(allure.severity_level.BLOCKER)
     @allure.title("Test create user")
     @allure.description("This test successfully create user")
+    @allure.label("owner", "Dmitry Dubrovin")
     def test_create_user_successfully(self):
         data = self.prepare_registration_data()
 
@@ -25,6 +26,7 @@ class TestUserRegister(BaseCase):
     @allure.severity(allure.severity_level.NORMAL)
     @allure.title("Test create user with existing email")
     @allure.description("This test successfully create user with existing email")
+    @allure.label("owner", "Dmitry Dubrovin")
     def test_create_user_with_existing_email(self):
         email = 'vinkotov@example.com'
         data = self.prepare_registration_data(email=email)
@@ -38,6 +40,7 @@ class TestUserRegister(BaseCase):
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.title("Test create user with incorrect email")
     @allure.description("This test try to create user with incorrect email (no '@' symbol)")
+    @allure.label("owner", "Dmitry Dubrovin")
     def test_create_user_with_invalid_email(self):
         email = 'vinkotovexample.com'
         data = self.prepare_registration_data(email=email)
@@ -50,6 +53,7 @@ class TestUserRegister(BaseCase):
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.title("Test create user without some fields")
     @allure.description("This test try to create user without some fields")
+    @allure.label("owner", "Dmitry Dubrovin")
     @pytest.mark.parametrize('field', registration_fields)
     def test_create_user_without_field(self, field):
         data = self.prepare_registration_data()
@@ -63,6 +67,7 @@ class TestUserRegister(BaseCase):
     @allure.severity(allure.severity_level.NORMAL)
     @allure.title("Test create user with very short name")
     @allure.description("This test try to create user with very short name fields (1 symbol)")
+    @allure.label("owner", "Dmitry Dubrovin")
     @pytest.mark.parametrize('name_field', filter(lambda key: 'name' in key.lower(), registration_fields))
     def test_create_user_with_short_name(self, name_field):
         data = self.prepare_registration_data()
@@ -76,6 +81,7 @@ class TestUserRegister(BaseCase):
     @allure.severity(allure.severity_level.NORMAL)
     @allure.title("Test create user with long name")
     @allure.description("This test try to create user with long name fields (>250 symbols)")
+    @allure.label("owner", "Dmitry Dubrovin")
     @pytest.mark.parametrize('name_field', filter(lambda key: 'name' in key.lower(), registration_fields))
     def test_create_user_with_long_name(self, name_field):
         data = self.prepare_registration_data()

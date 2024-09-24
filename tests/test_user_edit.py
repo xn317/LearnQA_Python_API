@@ -31,6 +31,7 @@ class TestUserEdit(BaseCase):
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.title("Test edit user")
     @allure.description("This test create new user and edit firstName to it")
+    @allure.label("owner", "Dmitry Dubrovin")
     def test_edit_just_created_user(self):
         user_data = self.create_new_user()
 
@@ -67,6 +68,7 @@ class TestUserEdit(BaseCase):
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.title("Test edit user without auth")
     @allure.description("This test create new user and try edit params without auth")
+    @allure.label("owner", "Dmitry Dubrovin")
     @pytest.mark.parametrize('param', user_params)
     def test_no_auth_edit(self, param):
         user_data = self.create_new_user()
@@ -113,6 +115,7 @@ class TestUserEdit(BaseCase):
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.title("Test edit user by other user")
     @allure.description("This test create new user and try edit params by other user")
+    @allure.label("owner", "Dmitry Dubrovin")
     @pytest.mark.parametrize('param', user_params)
     def test_edit_by_other_user(self, param):
         user_data = self.create_new_user()
@@ -163,6 +166,7 @@ class TestUserEdit(BaseCase):
     @allure.severity(allure.severity_level.NORMAL)
     @allure.title("Test edit user and set incorrect email")
     @allure.description("This test create new user and try edit email to incorrect")
+    @allure.label("owner", "Dmitry Dubrovin")
     def test_edit_email_to_incorrect(self):
         user_data = self.create_new_user()
 
@@ -195,6 +199,7 @@ class TestUserEdit(BaseCase):
     @allure.severity(allure.severity_level.NORMAL)
     @allure.title("Test edit user and set incorrect firstName")
     @allure.description("This test create new user and try edit firstName to incorrect")
+    @allure.label("owner", "Dmitry Dubrovin")
     def test_edit_firstname_to_incorrect(self):
         user_data = self.create_new_user()
 
