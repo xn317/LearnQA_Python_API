@@ -7,6 +7,7 @@ import allure
 @allure.epic("Get user info cases")
 class TestUserGet(BaseCase):
     @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Test get user details without authorization")
     @allure.description("This test try to get user details without authorization")
     def test_get_user_details_not_auth(self):
         response = MyRequests.get("/user/2")
@@ -17,6 +18,7 @@ class TestUserGet(BaseCase):
         Assertions.assert_json_has_not_key(response, "lastName")
 
     @allure.severity(allure.severity_level.BLOCKER)
+    @allure.title("Test get user details")
     @allure.description("This test authorize by user and try to get the details of it")
     def test_get_user_details_auth_as_same_user(self):
         data = {
@@ -38,6 +40,7 @@ class TestUserGet(BaseCase):
         Assertions.assert_json_has_keys(response2, expected_fileds)
 
     @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Test get user details by other user")
     @allure.description("This test authorize by user and try to get the details of other user")
     def test_get_user_details_auth_as_other_user(self):
         data = {

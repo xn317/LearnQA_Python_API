@@ -28,6 +28,7 @@ class TestUserDelete(BaseCase):
         return auth_sid, token
 
     @allure.severity(allure.severity_level.NORMAL)
+    @allure.title("Test delete user with ID < 5")
     @allure.description("This test try to delete user with small ID")
     def test_delete_small_id_user(self):
         auth_sid, token = self.user_login('vinkotov@example.com', '1234')
@@ -46,6 +47,7 @@ class TestUserDelete(BaseCase):
         )
 
     @allure.severity(allure.severity_level.BLOCKER)
+    @allure.title("Test delete user")
     @allure.description("This test create new user, delete this user and check it")
     def test_delete_user(self):
         user_data = self.create_new_user()
@@ -71,6 +73,7 @@ class TestUserDelete(BaseCase):
             f"Unexpected response content {response2.content}"
 
     @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Test delete user by other user")
     @allure.description("This test create new user and try to delete it from other user")
     def test_delete_user_by_other(self):
 
